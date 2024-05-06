@@ -12,7 +12,7 @@ export default function Signin() {
 
     useEffect(()=>{
         if(localStorage.getItem('inpData')!==null){
-            // navigate('/chat')
+            navigate('/chat')
         }
     },[])
 
