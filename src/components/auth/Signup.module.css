@@ -1,0 +1,88 @@
+.bigBox{
+    border: 2px solid Black;
+    width: 50vw;
+    margin: auto;
+    margin-top: 5vh;
+    height: 90vh;
+    border-radius: 20px;
+}
+.logo{
+    border: 2px solid rgb(0, 0, 0);
+    width: 30vh;
+    height: 30vh;
+    margin: auto;
+    margin-top: 5vh;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+.logo .logo1{
+    border: 2px solid Black;
+    width: 27vh;
+    height: 27vh;
+    text-align: center;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: wheat;
+    overflow: hidden;
+}
+.logo img{
+    width: 25vh;
+    height: 25vh;
+    transition: 0.5s;
+}
+.logo img:hover{
+    width: 30vh;
+    height: 30vh;
+    transition: 0.5s;
+}
+.inp{
+    /* border: 2px solid Black; */
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+.inp input{
+    width: 100%;
+    margin: auto;
+    height: 50px;
+    padding: 15px;
+    font-size: 25px;
+    box-sizing: border-box;
+    border-radius: 25px;
+}
+.inp button{
+    /* border: 2px solid Black; */
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 20px;
+}
+.signup{
+    text-align: center;
+}
+.signup a{
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+}
+.chooseLogo{
+    position: absolute;
+    /* border:2px solid black; */
+    width: 50vw;
+    /* height: 24vw; */
+    border-radius: 20px;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    align-items: center;
+}
+.choose img{
+    width: 7.5vw;
+}

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./Chat.module.css"
 import axios from "axios"
-import p1 from "./profile.png"
 
 export default function Chat() {
     const [chat, setchat] = useState("")
-    const [data, setData] = useState([{ name: "Bhudeo Krit", icon: "", chat: "Hi, This is the first message" }])
+    const [name, setName] = useState("")
+    const [profile, setProfile] = useState("")
+    const [data, setData] = useState([{ name: "Bhudeo Krit", profile: "", chat: "Hi, This is the first message" }])
+    const [info, setInfo] = useState({name:"",email:"",pass:"",profile:""});
     function handleChange(e) {
         e.preventDefault();
         setchat(e.target.value)
@@ -14,7 +16,7 @@ export default function Chat() {
         e.preventDefault();
         if (chat.trim() !== "") {
             try {
-                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { chat }, { headers: { "Content-Type": "application/json" } });
+                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name,profile,chat }, { headers: { "Content-Type": "application/json" } });
                 setchat("")
                 // console.log(res.data)
             }
@@ -23,12 +25,15 @@ export default function Chat() {
             }
         }
     }
+    useEffect(()=>{
+        setName(JSON.parse(localStorage.getItem('inpData')).name)
+        setProfile(JSON.parse(localStorage.getItem('inpData')).profile)
+    },[])
     useEffect(() => {
         async function storeData() {
             try {
                 const response = await axios.get("https://chatapp-backend-pywd.onrender.com/")
                 setData(response.data.message);
-
             }
             catch (err) {
                 console.log(err);
@@ -42,10 +47,10 @@ export default function Chat() {
                 {data.map((ele, ind) =>
                     <div key={ind} className={styles.data}>
                         <div className={styles.icon}>
-                            <img src={p1} alt="pho" width="100%" />
+                            <img src={ele.profile} alt="pho" width="100%" />
                         </div>
                         <div className={styles.txt}>
-                            <div className={styles.name}>{"name"}</div>
+                            <div className={styles.name}>{ele.name}</div>
                             <div className={styles.chat}>{ele.chat}</div>
                         </div>
                     </div>)}
