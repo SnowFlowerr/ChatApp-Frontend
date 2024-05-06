@@ -1,0 +1,109 @@
+.bigbox{
+    border: 2px solid black;
+    width: 51vw;
+    margin: auto;
+    margin-top: 0.7vh;
+    border-radius: 20px;
+    padding: 10px;
+}
+.box{
+    border: 2px solid black;
+    width: 50vw;
+    margin: auto;
+    height: 90vh;
+    border-radius: 20px;
+    overflow: auto;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    /* padding: 20px; */
+}
+.inp{
+    width: 50vw;
+    margin: auto;
+    margin-top: 1vh;
+    display: flex;
+    border-radius: 100px;
+}
+.inp input{
+    width: 100%;
+    font-size: 25px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+.inp button{
+    width: 100px;
+    border-radius: 20px;
+}
+.data{
+    /* border: 2px solid black; */
+    /* height: 200px; */
+    display: flex;
+    margin: 10px;
+}
+.icon{
+    width: 60px;
+    margin: 10px;
+    /* border: 2px solid black; */
+}
+.icon img{
+    width: 60px;
+    /* border: 2px solid black; */
+}
+.name{
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: 600;
+}
+.chat{
+    margin-left: 5px;
+}
+.scroll{
+    position: absolute;
+    text-align: right;
+    width: 50vw;
+    margin-top: -100px;
+}
+.scroll button{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    font-size: 30px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+}
+.scroll button a{
+    text-decoration: none;
+}
+@media screen and (max-width:600px) {
+    .bigbox{
+        border: 2px solid black;
+        margin-top: 0px;
+        width: 100vw;
+        padding-bottom: 10px;
+        /* height: 100dvh; */
+    }
+    .box{
+        border: 2px solid black;
+        width: 100%;
+        height: 95.5vh;
+        border-radius: 20px;
+        overflow: auto;
+        box-sizing: border-box;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+    }
+    .scroll{
+        position: absolute;
+        text-align: right;
+        width: 98%;
+        margin-top: -100px;
+        /* border: 2px solid black; */
+        box-sizing: border-box;
+    }
+    .inp{
+        width: 100%;
+    }
+}
