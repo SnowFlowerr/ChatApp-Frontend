@@ -51,7 +51,7 @@ export default function Chat() {
         if(scro===true){
             scrollToBottom()
         }
-    },[data])
+    },)
     function handleTop(e){
         e.preventDefault();
         setScro(!scro)
