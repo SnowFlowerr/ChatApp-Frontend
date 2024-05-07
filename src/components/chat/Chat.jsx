@@ -51,7 +51,6 @@ export default function Chat() {
         if(scro===true){
             scrollToBottom()
         }
-        console.log("hi")
     },[data])
     function handleTop(e){
         e.preventDefault();
