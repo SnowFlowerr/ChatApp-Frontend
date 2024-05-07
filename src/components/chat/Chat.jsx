@@ -70,11 +70,13 @@ export default function Chat() {
                         </div>
                     </div>)}
             </div>
+            <div className={styles.scroll} id='scroll' ><button onClick={handleTop}>{scro===true?<span className={styles.up}>⬆</span>:<span className={styles.down}>⬇︎</span>}</button></div>
+            <div>
             <form className={styles.inp} onSubmit={handleSend}>
                 <input type="chat" value={chat} onChange={handleChange} placeholder='Enter Your Message'/>
                 <button onClick={handleSend}>Send</button>
             </form>
-            <div className={styles.scroll} id='scroll' ><button onClick={handleTop}>{scro===true?<span className={styles.up}>⬆</span>:<span className={styles.down}>⬇︎</span>}</button></div>
+            </div>
         </div>
     )
 }
