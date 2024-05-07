@@ -20,8 +20,8 @@ export default function Chat() {
         e.preventDefault();
         if (chat.trim() !== "") {
             try {
-                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name,profile,chat,time }, { headers: { "Content-Type": "application/json" } });
                 setchat("")
+                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name,profile,chat,time }, { headers: { "Content-Type": "application/json" } });
                 // console.log(res.data)
             }
             catch (err) {
@@ -51,7 +51,7 @@ export default function Chat() {
         if(scro===true){
             scrollToBottom()
         }
-    },)
+    },[data])
     function handleTop(e){
         e.preventDefault();
         setScro(!scro)
