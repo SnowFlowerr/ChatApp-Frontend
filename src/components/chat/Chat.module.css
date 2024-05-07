@@ -1,7 +1,6 @@
 .bigbox{
     border: 2px solid black;
     width: 51vw;
-    /* height: 98.5dvh; */
     margin: auto;
     border-radius: 20px;
     padding: 10px;
@@ -101,11 +100,10 @@
 
 @media screen and (max-width:600px) {
     .bigbox{
-        border: 2px solid black;
+        /* border: 2px solid black; */
         margin-top: 0px;
         width: 100vw;
         padding-bottom: 10px;
-        height: 100dvh;
     }
     .box{
         border: 2px solid black;
