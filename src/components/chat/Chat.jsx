@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./Chat.module.css"
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 export default function Chat() {
     const [chat, setchat] = useState("")
@@ -9,7 +10,16 @@ export default function Chat() {
     const [scro, setScro] = useState(true);
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [data, setData] = useState([{ name: "Bhudeo Krit", profile: "", chat: "Hi, This is the first message" ,time:time}])
-
+    const navigate=useNavigate()
+    useEffect(()=>{
+        if(localStorage.getItem('inpData')===null){
+            navigate('/')
+        }
+        else{
+            setName(JSON.parse(localStorage.getItem('inpData')).name);
+            setProfile(JSON.parse(localStorage.getItem('inpData')).profile);
+        }
+    },[])
     function handleChange(e) {
         e.preventDefault();
         setchat(e.target.value)
@@ -29,10 +39,7 @@ export default function Chat() {
             }
         }
     }
-    useEffect(()=>{
-        setName(JSON.parse(localStorage.getItem('inpData')).name);
-        setProfile(JSON.parse(localStorage.getItem('inpData')).profile);
-    },[])
+
     function scrollToBottom() {
         document.getElementById('box').scrollTop = document.getElementById('box').scrollHeight;
     }
