@@ -52,13 +52,25 @@
     width: 60px;
     /* border: 2px solid black; */
 }
+.txt{
+    width: 100%;
+}
 .name{
     margin-top: 10px;
     font-size: 25px;
     font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+.time{
+    margin-top: 5px;
+    font-size: 15px;
+    color: grey;
 }
 .chat{
     margin-left: 5px;
+    padding-right: 45px;
 }
 .scroll{
     position: absolute;
@@ -77,6 +89,10 @@
 .scroll button a{
     text-decoration: none;
 }
+.down{
+    color: aqua;
+}
+
 @media screen and (max-width:600px) {
     .bigbox{
         border: 2px solid black;

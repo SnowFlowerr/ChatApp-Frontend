@@ -54,7 +54,7 @@ export default function Signin() {
                 <div className={styles.inp}><button onClick={handleSubmit}>Submit</button></div>
             </form>
             <div className={styles.signup}>
-                Have Account ? <a href="/signin">Sign In</a>
+                {/* Have Account ? <a href="/signin">Sign In</a> */}
             </div>
         </div>
     )
