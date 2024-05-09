@@ -127,13 +127,25 @@
     justify-content: space-between;
     padding-right: 10px;
 }
+.name button{
+    height: 28px;
+    width: 28px;
+    display: flex;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
 .time{
     margin-bottom: 5px;
+    margin-top: -5px;
+    /* margin-left: 3px; */
     font-size: 15px;
     color: grey;
 }
 .chat{
-    margin-left: 5px;
+    margin-left: 3px;
     padding-right: 45px;
 }
 .scroll{
@@ -179,6 +191,19 @@
         text-align: right;
         box-sizing: border-box;
         width: 100%;
+    }
+    .name button{
+        margin-right: -12px;
+        margin-top: 5px;
+    }
+    .time{
+        margin-top: -8px;
+    }
+    .icon{
+        width: 60px;
+        margin: 10px;
+        margin-left: -5px;
+        /* border: 2px solid black; */
     }
     .inp{
         width: 100%;
