@@ -17,7 +17,7 @@ export default function Chat() {
     const navigate=useNavigate()
     useEffect(()=>{
         if(localStorage.getItem('inpData')===null){
-            navigate('/signup')
+            navigate('/')
         }
         else{
             setName(JSON.parse(localStorage.getItem('inpData')).name);
