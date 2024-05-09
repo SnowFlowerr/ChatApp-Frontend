@@ -75,8 +75,8 @@
     width: 50vw;
     /* height: 24vw; */
     /* border-radius: 20px; */
-
-    margin-left: -10px;
+    border-radius: 0px 0px 20px 20px;
+    margin-left: -5px;
     background-color: white;
     padding: 10px;
     display: flex;
@@ -167,11 +167,13 @@
         margin-top: 0px;
         width: 100vw;
         padding-bottom: 10px;
+        padding: 2px;
+        border-radius: 0px;
     }
     .box{
         border: 2px solid black;
         width: 100%;
-        height: 84.3vh;
+        height: 86.3vh;
     }
     .scroll{
         text-align: right;
@@ -182,7 +184,8 @@
         width: 100%;
     }
     .chooseLogo{
-        width: 99vw;
+        width: 100vw;
+        border-radius: 0px 0px 20px 20px;
         /* border: 2px solid black; */
     }
     .choose img{
