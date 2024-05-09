@@ -45,7 +45,7 @@ export default function Chat() {
 
     async function handleDelete(_id){
         try {
-            const res = await axios.delete("https://chatapp-backend-pywd.onrender.com/deletedata", { id:_id }, { headers: { "Content-Type": "application/json" } });
+            const res = await axios.post("https://chatapp-backend-pywd.onrender.com/deletedata", { id:_id }, { headers: { "Content-Type": "application/json" } });
             // const res = await axios.post("http://localhost:8000/deletedata", { id:_id }, { headers: { "Content-Type": "application/json" } });
             // console.log(res.data)
         }
