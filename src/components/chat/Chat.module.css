@@ -3,20 +3,63 @@
     width: 51vw;
     margin: auto;
     border-radius: 20px;
+    margin-top: 0.1vh;
     padding: 10px;
     box-sizing: border-box;
+    background-color: black;
 }
 .box{
     border: 2px solid black;
     width: 95%vw;
     margin: auto;
-    height: 91.5vh;
-    border-radius: 20px;
+    height: 84vh;
+    border-radius: 0px 0px 20px 20px;
     overflow: auto;
     box-sizing: border-box;
     scrollbar-width: none;
     scroll-behavior: smooth;
+    background-color: rgb(255, 255, 255);
     /* padding: 20px; */
+}
+.change{
+    height: 7vh;
+    border: 2px solid black;
+    border-bottom: none;
+    border-radius: 20px 20px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    
+}
+.change .titleImg,.titleInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.titleInfo{
+    margin-left: 10px;
+}
+.infoName{
+    font-size: 30px;
+    font-weight: 700;
+}
+.infoEmail{
+    font-size: 15px;
+    margin-left: 2px;
+}
+.change img{
+    height: 6vh;
+    width: 6vh;
+    margin-right: 5px;
+    transition: 0.5s;
+}
+.change img:hover{
+    height: 6.5vh;
+    width: 6.5vh;
+    margin-right: 5px;
+    transition: 0.5s;
 }
 .inp{
     width: 95%vw;
@@ -25,6 +68,26 @@
     display: flex;
     border-radius: 100px;
     /* border: 2px solid black; */
+}
+.chooseLogo{
+    position: absolute;
+    /* border:2px solid black; */
+    width: 50vw;
+    /* height: 24vw; */
+    /* border-radius: 20px; */
+
+    margin-left: -10px;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    align-items: center;
+    background-color: black;
+}
+.choose img{
+    width: 7.5vw;
 }
 .inp input{
     width: 100%;
@@ -57,7 +120,7 @@
     width: 100%;
 }
 .name{
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 21px;
     font-weight: 600;
     display: flex;
@@ -108,12 +171,7 @@
     .box{
         border: 2px solid black;
         width: 100%;
-        height: 91.5vh;
-        border-radius: 20px;
-        overflow: auto;
-        box-sizing: border-box;
-        scrollbar-width: none;
-        scroll-behavior: smooth;
+        height: 84.3vh;
     }
     .scroll{
         text-align: right;
@@ -122,5 +180,12 @@
     }
     .inp{
         width: 100%;
+    }
+    .chooseLogo{
+        width: 99vw;
+        /* border: 2px solid black; */
+    }
+    .choose img{
+        width: 14vw;
     }
 }

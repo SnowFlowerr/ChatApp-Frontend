@@ -5,6 +5,16 @@
     margin-top: 5vh;
     height: 90vh;
     border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: black;
+}
+.desig{
+    height: 100%;
+    width: 100%;
+    border: 2px solid Black;
+    border-radius: 20px;
+    background-color: white;
 }
 .logo{
     border: 2px solid Black;
@@ -74,14 +84,14 @@
     /* border:2px solid black; */
     width: 50vw;
     /* height: 24vw; */
-    border-radius: 20px;
-    background-color: white;
     padding: 10px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     box-sizing: border-box;
     align-items: center;
+    background-color: rgb(0, 0, 0);
+    margin-left: -24px;
 }
 .choose img{
     width: 7.5vw;

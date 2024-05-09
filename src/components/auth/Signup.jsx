@@ -6,12 +6,13 @@ import { useNavigate } from 'react-router-dom'
 export default function Signin() {
     const [pic, setPic] = useState(data[0])
     const [logo, setLogo] = useState(false)
+    const [err, setErr] = useState("")
     const [inpData, setInpData] = useState({name:"",email:"",pass:"",profile:pic})
     const navigate=useNavigate()
 
     useEffect(()=>{
         if(localStorage.getItem('inpData')!==null){
-            // navigate('/chat')
+            navigate('/chat')
         }
     },[])
 
@@ -26,9 +27,22 @@ export default function Signin() {
     function handleLo(ele){
         setPic(ele)
         setInpData({...inpData,['profile']:ele})
+        setLogo(false)
     }
     function handleSubmit(e){
         e.preventDefault();
+        if(inpData.name.trim()===""){
+            setErr("Enter The Name");
+            return;
+        }
+        if(inpData.email.trim()===""){
+            setErr("Enter The Email");
+            return;
+        }
+        if(inpData.pass.trim()===""){
+            setErr("Enter The Password");
+            return;
+        }
         localStorage.setItem("inpData",JSON.stringify(inpData))
         navigate('/chat')
     }
@@ -51,10 +65,11 @@ export default function Signin() {
                 <div className={styles.inp}><input type="text" placeholder='Enter Your Name' id='name' onChange={handleChange}/></div>
                 <div className={styles.inp}><input type="email" placeholder='Enter Your Email' id='email' onChange={handleChange} /></div>
                 <div className={styles.inp}><input type="password" placeholder='Enter Your Password' id='pass' onChange={handleChange} /></div>
+                <div className={styles.error}>{err&&(err)}</div>
                 <div className={styles.inp}><button onClick={handleSubmit}>Submit</button></div>
             </form>
             <div className={styles.signup}>
-                {/* Have Account ? <a href="/signin">Sign In</a> */}
+                Have an Account ? <a href="/signin">Sign In</a>
             </div>
         </div>
     )
