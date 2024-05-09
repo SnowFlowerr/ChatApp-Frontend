@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import styles from "./Signin.module.css"
+import styles from "./Signup.module.css"
 import data from "../asset/data"
 import { useNavigate } from 'react-router-dom'
 
