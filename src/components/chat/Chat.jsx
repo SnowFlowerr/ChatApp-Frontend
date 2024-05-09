@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Chat() {
     const [chat, setchat] = useState("")
+    const [email, setEmail] = useState("")
     const [name, setName] = useState("")
     const [profile, setProfile] = useState("")
     const [scro, setScro] = useState(true);
@@ -18,6 +19,7 @@ export default function Chat() {
         else{
             setName(JSON.parse(localStorage.getItem('inpData')).name);
             setProfile(JSON.parse(localStorage.getItem('inpData')).profile);
+            setEmail(JSON.parse(localStorage.getItem('inpData')).email);
         }
     },[])
     function handleChange(e) {
@@ -31,12 +33,24 @@ export default function Chat() {
         if (chat.trim() !== "") {
             try {
                 setchat("")
-                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name,profile,chat,time }, { headers: { "Content-Type": "application/json" } });
+                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name,profile,chat,time,email }, { headers: { "Content-Type": "application/json" } });
+                // const res = await axios.post("http://localhost:8000/createdata", { name,profile,chat,time,email }, { headers: { "Content-Type": "application/json" } });
                 // console.log(res.data)
             }
             catch (err) {
                 alert(err.message)
             }
+        }
+    }
+
+    async function handleDelete(_id){
+        try {
+            const res = await axios.delete("https://chatapp-backend-pywd.onrender.com/deletedata", { id:_id }, { headers: { "Content-Type": "application/json" } });
+            // const res = await axios.post("http://localhost:8000/deletedata", { id:_id }, { headers: { "Content-Type": "application/json" } });
+            // console.log(res.data)
+        }
+        catch (err) {
+            alert(err.message)
         }
     }
 
@@ -47,6 +61,7 @@ export default function Chat() {
         async function storeData() {
             try {
                 const response = await axios.get("https://chatapp-backend-pywd.onrender.com/")
+                // const response = await axios.get("http://localhost:8000")
                 setData(response.data.message);
             }
             catch (err) {
@@ -72,7 +87,8 @@ export default function Chat() {
                             <img src={ele.profile} alt="pho" width="100%" />
                         </div>
                         <div className={styles.txt}>
-                            <div className={styles.name}><span>{ele.name}</span><span className={styles.time}>{ele.time}</span></div>
+                            <div className={styles.name}><span>{ele.name}</span> {ele.name===name && ele.email===email ?<button onClick={()=>handleDelete(ele._id)}><i class="fa-solid fa-trash"></i></button>:null}</div>
+                            <div className={styles.time}>{ele.time}</div>
                             <div className={styles.chat}>{ele.chat}</div>
                         </div>
                     </div>)}
