@@ -122,10 +122,10 @@ export default function Chat() {
         e.preventDefault()
         setIsvid(!isvid);
         if(!isvid){
-            document.getElementById('box').style.height="78.4vh"
+            document.getElementById('box').style.height="78.2vh"
         }
         else{
-            document.getElementById('box').style.height="84.5vh"
+            document.getElementById('box').style.height="84.35vh"
         }
     }
     return (
@@ -189,7 +189,7 @@ export default function Chat() {
             
                 {isvid &&
                     <form className={styles.inp}>
-                        <input type="chat" value={video} onChange={changeVideo} placeholder='Enter Your Video Link' />
+                        <input type="chat" value={video} onChange={changeVideo} placeholder='Enter A Valid Video Link' />
                     </form>}
                 <form className={styles.inp} onSubmit={handleSend}>
                     <input type="chat" value={chat} onChange={handleChange} placeholder='Enter Your Message' />

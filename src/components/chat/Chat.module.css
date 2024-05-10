@@ -12,7 +12,7 @@
     border: 2px solid black;
     width: 95%vw;
     margin: auto;
-    height: 84.5vh;
+    height: 84.35vh;
     border-radius: 0px 0px 20px 20px;
     overflow: auto;
     box-sizing: border-box;
@@ -225,7 +225,8 @@
         /* border: 2px solid black; */
         margin-top: 0px;
         width: 100vw;
-        padding: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
         padding-bottom: 10px;
         border-radius: 0px;
     }
