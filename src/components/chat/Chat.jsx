@@ -215,7 +215,7 @@ export default function Chat() {
                 }
                 <form className={styles.inp} onSubmit={handleSend}>
                     <input type="text" value={chat} onChange={handleChange} placeholder='Enter Your Message' />
-                    <button onClick={handleVideo} type='reset'>{isvid?"⬇︎":"⬆︎"}</button>
+                    <button onClick={handleVideo} type='reset'>{isvid?<i class="fa-solid fa-arrow-down"></i>:<i class="fa-solid fa-arrow-up"></i>}</button>
                     <button onClick={handleSend} type='submit'><i class="fa-solid fa-paper-plane"></i></button>
                 </form>
             </div>
