@@ -208,7 +208,7 @@ export default function Chat() {
             <div>
             
                 {isvid &&
-                    <form className={styles.inp}>
+                    <form className={styles.inp} onSubmit={handleSend}>
                         {isimg?<input type="text" value={video} onChange={changeVideo} placeholder='Enter A Valid Video Link' />:<input type="text" value={img} onChange={changeImage} placeholder='Enter A Valid Image Link' />}
                         <button onClick={()=>setIsimg(!isimg)} type='reset'>{isimg?<i class="fa-solid fa-image"></i>:<i class="fa-solid fa-video"></i>}</button>
                     </form>
