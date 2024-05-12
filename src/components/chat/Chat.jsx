@@ -37,12 +37,11 @@ export default function Chat() {
     function handleChange(e) {
         e.preventDefault();
         setchat(e.target.value)
-
     }
 
     async function handleSend(e) {
         e.preventDefault();
-        if (chat.trim() !== "" || video.trim()!=="" || img.trim!=="") {
+        if ((chat+img+video).trim()!=="") {
             try {
                 setchat("")
                 setVideo("")
@@ -140,6 +139,15 @@ export default function Chat() {
         localStorage.clear();
         navigate('/')
     }
+    function handlelink(text){
+        let ind = text.indexOf("view?");
+        if(ind!==-1){
+            return text.slice(0,ind)+"preview"
+        }
+        else{
+            return text;
+        }
+    }
     let width =window.innerWidth;
     return (
         <div className={styles.bigbox}>
@@ -192,11 +200,13 @@ export default function Chat() {
                             <div className={styles.time}>{ele.time}</div>
                             {ele.img &&
                             <div className={styles.image}>
-                                <img src={ele.img} alt="Image" width="95%"/>
+                                {ele.img.includes("drive")? <iframe src={handlelink(ele.img)} title={ele.img} width="95%" allow="autoplay" allowFullScreen={true}></iframe>:
+                                <img src={ele.img} alt="Image1" width="95%"/>}
                             </div>}
                             {ele.video &&
-                            <div className={styles.video}>
-                                <ReactPlayer url={ele.video} controls={true} className={styles.player} width="95%" height={width>=600?"20rem":"10rem"}/>
+                            <div>
+                                {ele.video.includes("yout")?<ReactPlayer url={ele.video} controls={true} className={styles.player} width="95%" height={width>=600?"20rem":"10rem"}/>:<div className={styles.video}><iframe src={handlelink(ele.video)} title={ele.video} allow="autoplay" allowFullScreen={true}></iframe></div>}
+                            
                             </div>}
                             <div className={styles.chat}>{ele.chat}</div>
                         </div>
@@ -209,7 +219,7 @@ export default function Chat() {
             
                 {isvid &&
                     <form className={styles.inp} onSubmit={handleSend}>
-                        {isimg?<input type="text" value={video} onChange={changeVideo} placeholder='Enter A Valid Video Link' />:<input type="text" value={img} onChange={changeImage} placeholder='Enter A Valid Image Link' />}
+                        {isimg?<input type="text" value={video} onChange={changeVideo} placeholder='Enter Any Valid Link' />:<input type="text" value={img} onChange={changeImage} placeholder='Enter A Valid Image Link' />}
                         <button onClick={()=>setIsimg(!isimg)} type='reset'>{isimg?<i class="fa-solid fa-image"></i>:<i class="fa-solid fa-video"></i>}</button>
                     </form>
                 }

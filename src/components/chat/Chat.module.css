@@ -1,4 +1,4 @@
-.bigbox{
+.bigbox {
     border: 2px solid black;
     width: 51vw;
     margin: auto;
@@ -8,7 +8,8 @@
     box-sizing: border-box;
     background-color: black;
 }
-.box{
+
+.box {
     border: 2px solid black;
     width: 95%vw;
     margin: auto;
@@ -21,7 +22,8 @@
     background-color: rgb(255, 255, 255);
     /* padding: 20px; */
 }
-.change{
+
+.change {
     height: 7vh;
     border: 2px solid black;
     border-bottom: none;
@@ -32,35 +34,43 @@
     background-color: black;
     color: white;
 }
-.change .titleImg,.titleInfo{
+
+.change .titleImg,
+.titleInfo {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.titleInfo{
+
+.titleInfo {
     margin-left: 10px;
 }
-.infoName{
+
+.infoName {
     font-size: 30px;
     font-weight: 700;
 }
-.infoEmail{
+
+.infoEmail {
     font-size: 15px;
     margin-left: 2px;
 }
-.change img{
+
+.change img {
     height: 6vh;
     width: 6vh;
     margin-right: 5px;
     transition: 0.5s;
 }
-.change img:hover{
+
+.change img:hover {
     height: 6.5vh;
     width: 6.5vh;
     margin-right: 5px;
     transition: 0.5s;
 }
-.inp{
+
+.inp {
     width: 95%vw;
     margin: auto;
     margin-top: 15px;
@@ -68,7 +78,8 @@
     border-radius: 100px;
     /* border: 2px solid white; */
 }
-.chooseLogo{
+
+.chooseLogo {
     position: absolute;
     /* border:2px solid black; */
     width: 50vw;
@@ -82,8 +93,63 @@
     box-sizing: border-box;
     align-items: center;
     background-color: black;
+    z-index: 1;
 }
-.choose{
+
+.video {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    z-index: 0;
+    
+    /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+.video .player{
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.image{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+    z-index: 0;
+}
+.image iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.choose {
     width: 7.5vw;
     height: 7.5vw;
     border: 3px solid;
@@ -96,28 +162,33 @@
     align-items: center;
 
 }
-.choose img{
+
+.choose img {
     width: 7.5vw;
 }
-.inp input{
+
+.inp input {
     width: 100%;
     font-size: 25px;
     padding-left: 10px;
     box-sizing: border-box;
     border-radius: 20px;
 }
-.inp button{
+
+.inp button {
     width: 50px;
     border-radius: 20px;
     margin-left: 5px;
 }
-.inpt{
+
+.inpt {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
     /* border: 2px solid white; */
 }
-.inpt input{
+
+.inpt input {
     width: 40vw;
     height: 40px;
     border-radius: 20px;
@@ -125,7 +196,8 @@
     box-sizing: border-box;
     font-size: 20px;
 }
-.inpt button{
+
+.inpt button {
     height: 40px;
     width: 80px;
     border-radius: 25px;
@@ -134,30 +206,36 @@
     align-items: center;
 
 }
-.inptsub{
+
+.inptsub {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.data{
+
+.data {
     /* border: 2px solid black; */
     /* height: 200px; */
     display: flex;
     margin: 10px;
 }
-.icon{
+
+.icon {
     width: 60px;
     margin: 10px;
     /* border: 2px solid black; */
 }
-.icon img{
+
+.icon img {
     width: 60px;
-    
+
 }
-.txt{
+
+.txt {
     width: 100%;
 }
-.name{
+
+.name {
     margin-top: 10px;
     font-size: 21px;
     font-weight: 600;
@@ -165,7 +243,8 @@
     justify-content: space-between;
     padding-right: 10px;
 }
-.name button{
+
+.name button {
     height: 28px;
     width: 28px;
     display: flex;
@@ -175,18 +254,21 @@
     justify-content: center;
     align-items: center;
 }
-.time{
+
+.time {
     margin-bottom: 5px;
     margin-top: -5px;
     /* margin-left: 3px; */
     font-size: 15px;
     color: grey;
 }
-.chat{
+
+.chat {
     margin-left: 3px;
     padding-right: 45px;
 }
-.scroll{
+
+.scroll {
     position: relative;
     text-align: right;
     width: 100%;
@@ -194,7 +276,8 @@
     margin-left: -5px;
     /* border: 2px solid black; */
 }
-.scroll button{
+
+.scroll button {
     height: 40px;
     width: 40px;
     border-radius: 50px;
@@ -204,15 +287,17 @@
     background-color: black;
     color: rgb(255, 255, 255);
 }
-.scroll button a{
+
+.scroll button a {
     text-decoration: none;
 }
-.down{
+
+.down {
     color: aqua;
 }
 
 @media screen and (max-width:600px) {
-    .bigbox{
+    .bigbox {
         /* border: 2px solid black; */
         margin-top: 0px;
         width: 100vw;
@@ -221,41 +306,50 @@
         padding-bottom: 10px;
         border-radius: 0px;
     }
-    .box{
+
+    .box {
         border: 2px solid black;
         width: 100%;
         height: 84.5vh;
     }
-    .scroll{
+
+    .scroll {
         text-align: right;
         box-sizing: border-box;
         width: 100%;
     }
-    .name button{
+
+    .name button {
         margin-right: -12px;
         margin-top: 5px;
     }
-    .time{
+
+    .time {
         margin-top: -8px;
     }
-    .icon{
+
+    .icon {
         width: 60px;
         margin: 10px;
         margin-left: -5px;
         /* border: 2px solid black; */
     }
-    .inpt input{
+
+    .inpt input {
         width: 90vw;
     }
-    .inp{
+
+    .inp {
         width: 100%;
     }
-    .chooseLogo{
+
+    .chooseLogo {
         width: 100vw;
         border-radius: 0px 0px 20px 20px;
         /* border: 2px solid black; */
     }
-    .choose{
+
+    .choose {
         width: 14vw;
         height: 14vw;
         border: 3px solid;
@@ -267,7 +361,8 @@
         justify-content: center;
         align-items: center;
     }
-    .choose img{
+
+    .choose img {
         width: 14vw;
     }
 }
