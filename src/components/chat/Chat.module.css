@@ -60,18 +60,6 @@
     margin-right: 5px;
     transition: 0.5s;
 }
-/* .video{
-    border: 2px solid rgb(14, 14, 14);
-    display: flex;
-    justify-content: center;
-    width: 37vw;
-    height: 21vw;
-    box-sizing: border-box;
-}
-.video .player{
-    border: 2px solid rgb(14, 14, 14);
-    height: 21vw;
-} */
 .inp{
     width: 95%vw;
     margin: auto;
@@ -84,8 +72,6 @@
     position: absolute;
     /* border:2px solid black; */
     width: 50vw;
-    /* height: 24vw; */
-    /* border-radius: 20px; */
     border-radius: 0px 0px 20px 20px;
     margin-left: -5px;
     background-color: white;
@@ -141,12 +127,17 @@
 }
 .inpt button{
     height: 40px;
-    width: 100px;
+    width: 80px;
     border-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
 
+}
+.inptsub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .data{
     /* border: 2px solid black; */
@@ -279,15 +270,4 @@
     .choose img{
         width: 14vw;
     }
-    /* .video{
-        border: 2px solid rgb(14, 14, 14);
-        display: flex;
-        width: 80vw;
-        height: 25vw;
-        box-sizing: border-box;
-    }
-.player{
-    border: 2px solid rgb(14, 14, 14);
-    height: 10vw;
-} */
 }

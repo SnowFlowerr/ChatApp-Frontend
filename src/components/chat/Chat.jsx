@@ -14,6 +14,8 @@ export default function Chat() {
     const [scro, setScro] = useState(true);
     const [video, setVideo] = useState("");
     const [isvid, setIsvid] = useState(false);
+    const [isimg, setIsimg] = useState(false);
+    const [img, setImg] = useState("");
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [inpData, setInpData] = useState({ name: "", email: "", pass: "", profile: "" })
     const [data, setData] = useState([{ name: "Bhudeo Krit", profile: profile, chat: "Hi, This is the first message", time: time }])
@@ -40,12 +42,13 @@ export default function Chat() {
 
     async function handleSend(e) {
         e.preventDefault();
-        if (chat.trim() !== "" || video.trim()!=="") {
+        if (chat.trim() !== "" || video.trim()!=="" || img.trim!=="") {
             try {
                 setchat("")
                 setVideo("")
-                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name, profile, chat, time, email, video }, { headers: { "Content-Type": "application/json" } });
-                // const res = await axios.post("http://localhost:8000/createdata", { name,profile,chat,time,email, video }, { headers: { "Content-Type": "application/json" } });
+                setImg("")
+                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name, profile, chat, time, email, video, img }, { headers: { "Content-Type": "application/json" } });
+                // const res = await axios.post("http://localhost:8000/createdata", { name,profile,chat,time,email, video, img }, { headers: { "Content-Type": "application/json" } });
                 // console.log(res.data)
             }
             catch (err) {
@@ -128,6 +131,15 @@ export default function Chat() {
             document.getElementById('box').style.height="84.35vh"
         }
     }
+    function changeImage(e){
+        e.preventDefault()
+        setImg(e.target.value)
+    }
+    function handleLogout(e){
+        e.preventDefault()
+        localStorage.clear();
+        navigate('/')
+    }
     let width =window.innerWidth;
     return (
         <div className={styles.bigbox}>
@@ -156,8 +168,11 @@ export default function Chat() {
                         <div className={styles.inpt}><input type="password" placeholder='Enter Your Password' id='pass' onChange={handleCha} value={inpData.pass} /></div>
                         {/* <div className={styles.error}>{err && (err)}</div> */}
                         <div className={styles.inpt}>
-                            <button onClick={handleCancel}>Cancel</button>
-                            <button onClick={handleSubmit}>Submit</button>
+                                <button onClick={handleLogout}>Logout</button>
+                            <div className={styles.inptsub}>
+                                <button onClick={handleCancel}>Cancel</button>
+                                <button onClick={handleSubmit}>Submit</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -175,6 +190,10 @@ export default function Chat() {
                                 {(ele.name === name && ele.email === email) || pass === "uzhizz996x" ? <button onClick={() => handleDelete(ele._id)}><i class="fa-solid fa-trash"></i></button> : null}
                             </div>
                             <div className={styles.time}>{ele.time}</div>
+                            {ele.img &&
+                            <div className={styles.image}>
+                                <img src={ele.img} alt="Image" width="95%"/>
+                            </div>}
                             {ele.video &&
                             <div className={styles.video}>
                                 <ReactPlayer url={ele.video} controls={true} className={styles.player} width="95%" height={width>=600?"20rem":"10rem"}/>
@@ -190,12 +209,13 @@ export default function Chat() {
             
                 {isvid &&
                     <form className={styles.inp}>
-                        <input type="chat" value={video} onChange={changeVideo} placeholder='Enter A Valid Video Link' />
+                        {isimg?<input type="text" value={video} onChange={changeVideo} placeholder='Enter A Valid Video Link' />:<input type="text" value={img} onChange={changeImage} placeholder='Enter A Valid Image Link' />}
+                        <button onClick={()=>setIsimg(!isimg)} type='reset'>{isimg?<i class="fa-solid fa-image"></i>:<i class="fa-solid fa-video"></i>}</button>
                     </form>
                 }
                 <form className={styles.inp} onSubmit={handleSend}>
-                    <input type="chat" value={chat} onChange={handleChange} placeholder='Enter Your Message' />
-                    <button onClick={handleVideo} type='reset'><i class="fa-solid fa-video"></i></button>
+                    <input type="text" value={chat} onChange={handleChange} placeholder='Enter Your Message' />
+                    <button onClick={handleVideo} type='reset'>{isvid?"⬇︎":"⬆︎"}</button>
                     <button onClick={handleSend} type='submit'><i class="fa-solid fa-paper-plane"></i></button>
                 </form>
             </div>
