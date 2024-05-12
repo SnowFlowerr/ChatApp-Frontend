@@ -120,31 +120,31 @@
     align-items: center;
 }
 .video iframe {
-    border: none;
+    border: 1px solid black;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    width: 100%;
+    width: 95%;
     height: 100%;
     z-index: 0;
 }
 .image{
     position: relative;
     overflow: hidden;
-    width: 100%;
+    /* width: 100%; */
     padding-top: 56.25%;
     z-index: 0;
 }
 .image iframe {
-    border: none;
+    border: 1px solid black;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    width: 100%;
+    width: 95%;
     height: 100%;
     z-index: 0;
 }

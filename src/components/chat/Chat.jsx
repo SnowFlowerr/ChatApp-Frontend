@@ -199,9 +199,11 @@ export default function Chat() {
                             </div>
                             <div className={styles.time}>{ele.time}</div>
                             {ele.img &&
-                            <div className={styles.image}>
-                                {ele.img.includes("drive")? <iframe src={handlelink(ele.img)} title={ele.img} width="95%" allow="autoplay" allowFullScreen={true}></iframe>:
+                            <div>
+                            
+                                {ele.img.includes("drive")?<div className={styles.image}> <iframe src={handlelink(ele.img)} title={ele.img} width="95%" allow="autoplay" allowFullScreen={true}></iframe></div>:
                                 <img src={ele.img} alt="Image1" width="95%"/>}
+                            
                             </div>}
                             {ele.video &&
                             <div>
