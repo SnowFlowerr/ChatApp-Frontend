@@ -121,7 +121,7 @@
     border-radius: 20px;
 }
 .inp button{
-    width: 40px;
+    width: 50px;
     border-radius: 20px;
     margin-left: 5px;
 }
@@ -141,7 +141,7 @@
 }
 .inpt button{
     height: 40px;
-    width: 40px;
+    width: 100px;
     border-radius: 25px;
     display: flex;
     justify-content: center;

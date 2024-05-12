@@ -45,7 +45,7 @@ export default function Chat() {
                 setchat("")
                 setVideo("")
                 const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name, profile, chat, time, email, video }, { headers: { "Content-Type": "application/json" } });
-                // const res = await axios.post("http://localhost:8000/createdata", { name,profile,chat,time,email }, { headers: { "Content-Type": "application/json" } });
+                // const res = await axios.post("http://localhost:8000/createdata", { name,profile,chat,time,email, video }, { headers: { "Content-Type": "application/json" } });
                 // console.log(res.data)
             }
             catch (err) {
@@ -128,6 +128,7 @@ export default function Chat() {
             document.getElementById('box').style.height="84.35vh"
         }
     }
+    let width =window.innerWidth;
     return (
         <div className={styles.bigbox}>
             <div className={styles.change}>
@@ -176,7 +177,7 @@ export default function Chat() {
                             <div className={styles.time}>{ele.time}</div>
                             {ele.video &&
                             <div className={styles.video}>
-                                <ReactPlayer url={ele.video} controls={true} className={styles.player} width="95%" height="13rem" />
+                                <ReactPlayer url={ele.video} controls={true} className={styles.player} width="95%" height={width>=600?"20rem":"10rem"}/>
                             </div>}
                             <div className={styles.chat}>{ele.chat}</div>
                         </div>
@@ -190,7 +191,8 @@ export default function Chat() {
                 {isvid &&
                     <form className={styles.inp}>
                         <input type="chat" value={video} onChange={changeVideo} placeholder='Enter A Valid Video Link' />
-                    </form>}
+                    </form>
+                }
                 <form className={styles.inp} onSubmit={handleSend}>
                     <input type="chat" value={chat} onChange={handleChange} placeholder='Enter Your Message' />
                     <button onClick={handleVideo} type='reset'><i class="fa-solid fa-video"></i></button>
