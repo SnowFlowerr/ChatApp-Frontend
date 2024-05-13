@@ -71,7 +71,7 @@ export default function Chat() {
     }
     useEffect(()=>{
         scrollToBottom();
-    })
+    },[])
     useEffect(() => {
         async function storeData() {
             try {
