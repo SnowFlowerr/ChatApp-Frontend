@@ -69,6 +69,9 @@ export default function Chat() {
     function scrollToBottom() {
         document.getElementById('box').scrollTop = document.getElementById('box').scrollHeight;
     }
+    useEffect(()=>{
+        scrollToBottom();
+    })
     useEffect(() => {
         async function storeData() {
             try {
