@@ -14,12 +14,18 @@ export default function Chat() {
     const [video, setVideo] = useState("");
     const [isvid, setIsvid] = useState(false);
     const [isimg, setIsimg] = useState(false);
+    const [scro, setScro] = useState(false);
     const [img, setImg] = useState("");
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [inpData, setInpData] = useState({ name: "", email: "", pass: "", profile: "" })
     const [data, setData] = useState([{ name: "Bhudeo Krit", profile: pic[0], chat: "Hi, This is the first message", time: time }])
     const [logo, setLogo] = useState(false)
     const navigate = useNavigate()
+
+    function scrollToBottom() {
+        document.getElementById('box').scrollTop = document.getElementById('box').scrollHeight;
+        // document.getElementById('scroll1').scrollIntoView()
+    }
     useEffect(() => {
         if (localStorage.getItem('inpData') === null) {
             navigate('/')
@@ -32,7 +38,9 @@ export default function Chat() {
             setInpData(JSON.parse(localStorage.getItem('inpData')));
             
         }
+
     }, [localStorage.getItem("inpData")])
+
     function handleChange(e) {
         e.preventDefault();
         setchat(e.target.value)
@@ -66,22 +74,17 @@ export default function Chat() {
         }
     }
 
-    function scrollToBottom() {
-        document.getElementById('box').scrollTop = document.getElementById('box').scrollHeight;
-    }
-    useEffect(()=>{
-        scrollToBottom();
-    },[])
+    const [height,setHeight]=useState(0)
     useEffect(() => {
         async function storeData() {
             try {
                 const response = await axios.get("https://chatapp-backend-pywd.onrender.com/")
                 // const response = await axios.get("http://localhost:8000")
                 let copydata=response.data.message
+                setData(copydata);
                 if(copydata.length>data.length){
                     scrollToBottom()
                 }
-                setData(copydata);
             }
             catch (err) {
                 console.log(err);
@@ -89,6 +92,13 @@ export default function Chat() {
         }
         setTime(new Date().toLocaleTimeString())
         storeData();
+        setHeight(document.getElementById('box').scrollTop)
+        if(height<document.getElementById('box').scrollHeight-1000){
+            setScro(true)
+        }
+        else{
+            setScro(false)
+        }
     },[data] )
     function logocol(){
         for(let i=0;i<pic.length;i++){
@@ -124,9 +134,11 @@ export default function Chat() {
         setIsvid(!isvid);
         if(!isvid){
             document.getElementById('box').style.height="78.2vh"
+            scrollToBottom()
         }
         else{
             document.getElementById('box').style.height="84.35vh"
+            scrollToBottom()
         }
     }
     function changeImage(e){
@@ -148,6 +160,7 @@ export default function Chat() {
         }
     }
     let width =window.innerWidth;
+    
     return (
         <div className={styles.bigbox}>
             <div className={styles.change}>
@@ -186,10 +199,11 @@ export default function Chat() {
             )}
             <div className={styles.box} id='box'>
                 {data.map((ele, ind) =>
-                    // ind>data.length-20?<>
+                    ind>data.length-50?<>
                     <div key={ind} className={styles.data}>
                         <div className={styles.icon}>
                             <img src={ele.profile} alt="pho" width="100%" />
+                    
                         </div>
                         <div className={styles.txt}>
                             <div className={styles.name}>
@@ -212,12 +226,13 @@ export default function Chat() {
                             <div className={styles.chat}>{ele.chat}</div>
                         </div>
                     </div>
-                    // </>:""
+                    <div id='isscro'></div>
+                    </>:null
                 )}
             </div>
-            {/* <div className={styles.scroll} id='scroll' ><button onClick={handleTop}>{scro === true ? <span className={styles.up}>⬆</span> : <span className={styles.down}>⬇︎</span>}</button></div> */}
+            {scro === true ?<div className={styles.scroll} id='scroll' ><button onClick={scrollToBottom}> <span className={styles.up}>⬇︎</span></button></div>:null}
+
             <div>
-            
                 {isvid &&
                     <form className={styles.inp} onSubmit={handleSend}>
                         {isimg?<input type="text" value={video} onChange={changeVideo} placeholder='Enter Any Valid Link' />:<input type="text" value={img} onChange={changeImage} placeholder='Enter A Valid Image Link' />}
