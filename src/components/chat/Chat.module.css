@@ -105,7 +105,7 @@
     
     /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 }
-.video .player{
+/* .video .player{
     border: none;
     position: absolute;
     top: 0;
@@ -118,7 +118,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 .video iframe {
     border: 1px solid black;
     position: absolute;
@@ -274,6 +274,7 @@
     width: 100%;
     margin-top: -55px;
     margin-left: -5px;
+    visibility: hidden;
     /* border: 2px solid black; */
 }
 

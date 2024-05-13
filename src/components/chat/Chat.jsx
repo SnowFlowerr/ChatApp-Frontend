@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from "./Chat.module.css"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
@@ -18,8 +18,9 @@ export default function Chat() {
     const [img, setImg] = useState("");
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [inpData, setInpData] = useState({ name: "", email: "", pass: "", profile: "" })
-    const [data, setData] = useState([{ name: "Bhudeo Krit", profile: profile, chat: "Hi, This is the first message", time: time }])
+    const [data, setData] = useState([{ name: "Bhudeo Krit", profile: pic[0], chat: "Hi, This is the first message", time: time }])
     const [logo, setLogo] = useState(false)
+    const scroll=useRef(null)
     const navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem('inpData') === null) {
@@ -46,7 +47,7 @@ export default function Chat() {
                 setchat("")
                 setVideo("")
                 setImg("")
-                const res = await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name, profile, chat, time, email, video, img }, { headers: { "Content-Type": "application/json" } });
+                await axios.post("https://chatapp-backend-pywd.onrender.com/createdata", { name, profile, chat, time, email, video, img }, { headers: { "Content-Type": "application/json" } });
                 // const res = await axios.post("http://localhost:8000/createdata", { name,profile,chat,time,email, video, img }, { headers: { "Content-Type": "application/json" } });
                 // console.log(res.data)
             }
@@ -58,7 +59,7 @@ export default function Chat() {
 
     async function handleDelete(_id) {
         try {
-            const res = await axios.post("https://chatapp-backend-pywd.onrender.com/deletedata", { id: _id }, { headers: { "Content-Type": "application/json" } });
+            await axios.post("https://chatapp-backend-pywd.onrender.com/deletedata", { id: _id }, { headers: { "Content-Type": "application/json" } });
             // const res = await axios.post("http://localhost:8000/deletedata", { id:_id }, { headers: { "Content-Type": "application/json" } });
             // console.log(res.data)
         }
@@ -68,14 +69,20 @@ export default function Chat() {
     }
 
     function scrollToBottom() {
-        document.getElementById('box').scrollTop = document.getElementById('box').scrollHeight;
+        // document.getElementById('box').scrollTop = document.getElementById('box').scrollHeight;
+        scroll.current?.scrollIntoView()
     }
     useEffect(() => {
+        let len=data.length;
         async function storeData() {
             try {
                 const response = await axios.get("https://chatapp-backend-pywd.onrender.com/")
                 // const response = await axios.get("http://localhost:8000")
-                setData(response.data.message);
+                let copydata=response.data.message
+                if(copydata.length>data.length){
+                    scrollToBottom()
+                }
+                setData(copydata);
             }
             catch (err) {
                 console.log(err);
@@ -83,10 +90,7 @@ export default function Chat() {
         }
         setTime(new Date().toLocaleTimeString())
         storeData();
-        if (scro === true) {
-            scrollToBottom()
-        }
-    }, [data])
+    },[data] )
     function logocol(){
         for(let i=0;i<pic.length;i++){
             document.getElementById(`opt${i}`).style.borderColor="white"
@@ -215,14 +219,15 @@ export default function Chat() {
                     </div>
                     // </>:""
                 )}
+                <div ref={scroll}></div>
             </div>
-            <div className={styles.scroll} id='scroll' ><button onClick={handleTop}>{scro === true ? <span className={styles.up}>⬆</span> : <span className={styles.down}>⬇︎</span>}</button></div>
+            {/* <div className={styles.scroll} id='scroll' ><button onClick={handleTop}>{scro === true ? <span className={styles.up}>⬆</span> : <span className={styles.down}>⬇︎</span>}</button></div> */}
             <div>
             
                 {isvid &&
                     <form className={styles.inp} onSubmit={handleSend}>
                         {isimg?<input type="text" value={video} onChange={changeVideo} placeholder='Enter Any Valid Link' />:<input type="text" value={img} onChange={changeImage} placeholder='Enter A Valid Image Link' />}
-                        <button onClick={()=>setIsimg(!isimg)} type='reset'>{isimg?<i class="fa-solid fa-image"></i>:<i class="fa-solid fa-video"></i>}</button>
+                        <button onClick={()=>setIsimg(!isimg)} type='reset'>{isimg?<i class="fa-solid fa-image"></i>:<i class="fa-solid fa-file"></i>}</button>
                     </form>
                 }
                 <form className={styles.inp} onSubmit={handleSend}>
