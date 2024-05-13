@@ -11,7 +11,6 @@ export default function Chat() {
     const [name, setName] = useState("")
     const [profile, setProfile] = useState("")
     const [pass, setPassword] = useState("")
-    const [scro, setScro] = useState(true);
     const [video, setVideo] = useState("");
     const [isvid, setIsvid] = useState(false);
     const [isimg, setIsimg] = useState(false);
@@ -20,7 +19,6 @@ export default function Chat() {
     const [inpData, setInpData] = useState({ name: "", email: "", pass: "", profile: "" })
     const [data, setData] = useState([{ name: "Bhudeo Krit", profile: pic[0], chat: "Hi, This is the first message", time: time }])
     const [logo, setLogo] = useState(false)
-    const scroll=useRef(null)
     const navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem('inpData') === null) {
@@ -69,11 +67,9 @@ export default function Chat() {
     }
 
     function scrollToBottom() {
-        // document.getElementById('box').scrollTop = document.getElementById('box').scrollHeight;
-        scroll.current?.scrollIntoView()
+        document.getElementById('box').scrollTop = document.getElementById('box').scrollHeight;
     }
     useEffect(() => {
-        let len=data.length;
         async function storeData() {
             try {
                 const response = await axios.get("https://chatapp-backend-pywd.onrender.com/")
@@ -95,10 +91,6 @@ export default function Chat() {
         for(let i=0;i<pic.length;i++){
             document.getElementById(`opt${i}`).style.borderColor="white"
         }
-    }
-    function handleTop(e) {
-        e.preventDefault();
-        setScro(!scro)
     }
     function handleLo(ele,ind) {
         setInpData({ ...inpData, ['profile']: ele })
@@ -219,7 +211,6 @@ export default function Chat() {
                     </div>
                     // </>:""
                 )}
-                <div ref={scroll}></div>
             </div>
             {/* <div className={styles.scroll} id='scroll' ><button onClick={handleTop}>{scro === true ? <span className={styles.up}>⬆</span> : <span className={styles.down}>⬇︎</span>}</button></div> */}
             <div>
