@@ -255,22 +255,22 @@
 }
 
 .scroll {
-    position: relative;
+    position: absolute;
     text-align: right;
-    width: 100%;
-    height: 50px;
+    width: 49%;
     margin-top: -55px;
-    margin-left: -5px;
+    /* margin-left: -10px; */
+    /* margin-left: -5px; */
     /* visibility: hidden; */
-    /* border: 2px solid black; */
+    /* border: 2px solid rgb(255, 255, 255); */
 }
 
 .scroll button {
+    z-index: 10;
     height: 40px;
     width: 40px;
     border-radius: 50px;
     margin-top: 10px;
-    margin-left: -1px;
     font-size: 25px;
     background-color: black;
     color: rgb(255, 255, 255);
@@ -345,5 +345,9 @@
 
     .choose img {
         width: 14vw;
+    }
+    .scroll{
+        width: 100%;
+        margin-left: -15px;
     }
 }
