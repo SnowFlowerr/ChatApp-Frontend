@@ -81,7 +81,7 @@ export default function Chat() {
                 const response = await axios.get("https://chatapp-backend-pywd.onrender.com/")
                 // const response = await axios.get("http://localhost:8000")
                 let copydata=response.data.message
-                setData(copydata);
+                setData([...copydata]);
                 if(copydata.length>data.length){
                     scrollToBottom()
                 }
