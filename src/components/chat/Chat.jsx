@@ -83,6 +83,7 @@ export default function Chat() {
                 let copydata=response.data.message
                 setData([...copydata]);
                 if(copydata.length>data.length){
+                    console.log(copydata.length-data.length)
                     scrollToBottom()
                 }
             }
@@ -199,8 +200,8 @@ export default function Chat() {
             )}
             <div className={styles.box} id='box'>
                 {data.map((ele, ind) =>
-                    ind>data.length-50?<>
-                    <div key={ind} className={styles.data}>
+                    ind>data.length-50?<div key={ind}>
+                    <div  className={styles.data}>
                         <div className={styles.icon}>
                             <img src={ele.profile} alt="pho" width="100%" />
                     
@@ -227,7 +228,7 @@ export default function Chat() {
                         </div>
                     </div>
                     <div id='isscro'></div>
-                    </>:null
+                    </div>:null
                 )}
             </div>
             {scro === true ?<div className={styles.scroll} id='scroll' ><button onClick={scrollToBottom}> <span className={styles.up}>⬇︎</span></button></div>:null}
