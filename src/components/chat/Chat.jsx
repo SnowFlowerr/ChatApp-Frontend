@@ -85,6 +85,7 @@ export default function Chat() {
                 if(copydata.length>data.length){
                     console.log(copydata.length-data.length)
                     scrollToBottom()
+                    scrollToBottom()
                 }
             }
             catch (err) {
